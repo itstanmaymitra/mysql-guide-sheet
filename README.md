@@ -93,13 +93,15 @@ CREATE TABLE unique_cats
 );
 ```
 > We can also add `AUTO_INCREMENT` to the primary key so that the primary key value can automatically increment. 
+> Example:
 
 ```
 CREATE TABLE unique_cats 
 (
-    cat_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    cat_id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(50), 
-    age INT
+    age INT,
+    PRIMARY KEY (cat_id)
 );
 ```
 
@@ -144,3 +146,7 @@ VALUES  (column1_value1, column2_value1),
         (column1_value2, column2_value2),
         (column1_value3, column2_value3);
 ```
+
+
+## Retrieving data
+ 
