@@ -148,5 +148,71 @@ VALUES  (column1_value1, column2_value1),
 ```
 
 
-## Retrieving data
+## Retrieving/Read data
+The `SELECT` statement is used to fetch data from a database **table**.
  
+### ▶ Fetch all the available column data from the table :
+```
+SELECT * FROM <table_name>;
+```
+> In here, `*` means give all the available columns from the table.
+
+
+### ▶ Fetch specific column/columns data from the table :
+```
+SELECT <col_name> FROM <table_name>;
+
+or,
+
+SELECT <col1_name>, <col2_name> FROM <table_name>;
+```
+
+### ▶ Fetch column/columns data from the table with condition using `WHERE` :
+> The `WHERE` clause is used to specify a condition while fetching the data from a single table or by joining with multiple tables. If the given condition is satisfied, then only it returns a specific value from the table.
+
+```
+SELECT column1, column2
+FROM table_name
+WHERE [condition];
+```
+> The `WHERE` clause is not only used in the `SELECT` statement, but it is also used in the UPDATE, DELETE statement etc.
+
+
+## Updating data
+The `UPDATE` statement is used to update existing data in a **table**.
+ 
+### ▶ Update/Alter existing data in a table :
+```
+UPDATE <table_name>
+SET column1=value, column2=value2
+WHERE <some_column>=<some_value>;
+```
+
+## Deleting data
+The `DELETE` statement is used to delete records from a **table**:
+ 
+### ▶ Delete `Single` data from a table :
+```
+DELETE FROM <table_name>
+WHERE <some_column> = <some_value>;
+```
+### ▶ Delete `Every/all` data from a table :
+```
+DELETE FROM <table_name>;
+```
+
+## Extras :
+
+### ▶ SQL Aliases
+> SQL aliases are used to give a table, or a column in a table, a temporary name. An alias is created with the `AS` keyword. 
+
+> Column Syntax: 
+```
+SELECT <column_name> AS <alias_name>
+FROM <table_name>;
+```
+> Table Syntax:
+```
+SELECT <column_name>
+FROM <table_name> AS <alias_name>;
+```
