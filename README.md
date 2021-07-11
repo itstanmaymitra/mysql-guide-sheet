@@ -271,7 +271,7 @@ mysql> SELECT SUBSTRING('Sakila' FROM -4 FOR 2);
         -> 'ki'
 ```
 
-_The full reference of the string functions can be found_** [here](https://dev.mysql.com/doc/refman/8.0/en/string-functions.html "MySQL string functions")
+**_The full reference of the string functions can be found_** [here](https://dev.mysql.com/doc/refman/8.0/en/string-functions.html "MySQL string functions").
 
 -----
 ## Extras :
