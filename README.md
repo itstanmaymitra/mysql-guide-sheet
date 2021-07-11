@@ -231,6 +231,45 @@ Or,
 SELECT CONCAT(col1_name, col2_name) AS <alias_name> FROM <table_name>;
 ```
 
+### ▶ Concatination/Combining with separator :
+> `CONCAT_WS()` Same as the `CONCAT()` but the first argument is the separator for the rest of the arguments. The separator is added between the strings to be concatenated.
+
+```
+CONCAT_WS('<separator>', col1_name, col2_name, col3_name)
+```
+```
+SELECT CONCAT_WS('<separator>', col1_name, col2_name) AS <alias_name> FROM <table_name>;
+```
+
+### ▶ Substring :
+> `SUBSTRING()` Or `SUBSTR()` used to get the parts of the string. The general syntaxes are:
+```
+SUBSTRING(<string>, <position>)
+```
+```
+SUBSTRING(<string> FROM <position>)
+```
+```
+SUBSTRING(<string>, <position>, <length>)
+```
+```
+SUBSTRING(<string> FROM <position> FOR <length>)
+```
+** Examples:
+```
+mysql> SELECT SUBSTRING('Quadratically',5);
+        -> 'ratically'
+mysql> SELECT SUBSTRING('foobarbar' FROM 4);
+        -> 'barbar'
+mysql> SELECT SUBSTRING('Quadratically',5,6);
+        -> 'ratica'
+mysql> SELECT SUBSTRING('Sakila', -3);
+        -> 'ila'
+mysql> SELECT SUBSTRING('Sakila', -5, 3);
+        -> 'aki'
+mysql> SELECT SUBSTRING('Sakila' FROM -4 FOR 2);
+        -> 'ki'
+```
 
 -----
 ## Extras :
