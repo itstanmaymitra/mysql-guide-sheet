@@ -255,7 +255,7 @@ SUBSTRING(<string>, <position>, <length>)
 ```
 SUBSTRING(<string> FROM <position> FOR <length>)
 ```
-** Examples:
+**Examples:**
 ```
 mysql> SELECT SUBSTRING('Quadratically',5);
         -> 'ratically'
@@ -270,6 +270,8 @@ mysql> SELECT SUBSTRING('Sakila', -5, 3);
 mysql> SELECT SUBSTRING('Sakila' FROM -4 FOR 2);
         -> 'ki'
 ```
+
+_The full reference of the string functions can be found_** [here](https://dev.mysql.com/doc/refman/8.0/en/string-functions.html "MySQL string functions")
 
 -----
 ## Extras :
