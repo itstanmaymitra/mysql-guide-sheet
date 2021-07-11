@@ -33,6 +33,15 @@ SELECT database();
 SHOW WARNINGS;
 ```
 
+---
+### ▶ Run MySQL commands from the file :
+
+* Create a file with `.sql` file extension
+* `cd` into the file directory
+* Run MySQL in that directory with this command `mysql -u root -p`
+* To run the SQL commands from the file run `source file_name.sql`
+---
+
 
 ## Table 
 
@@ -201,9 +210,32 @@ WHERE <some_column> = <some_value>;
 DELETE FROM <table_name>;
 ```
 
+-----
+## MySQL string functions :
+
+### ▶ Concatination/Combining :
+> We can cancat/combine multiple fields' value together with `CONCAT()`string function. It returns concatenated string. The general syntax is given bellow.
+```
+CONCAT(col1_name, col2_name, col3_name)
+```
+> We can also use text in between
+```
+CONCAT(col1_name, 'text', col2_name, 'text')
+```
+> `CONCAT()` must have to use with `SELECT`
+```
+SELECT CONCAT(col1_name, col2_name) FROM <table_name>;
+```
+Or,
+```
+SELECT CONCAT(col1_name, col2_name) AS <alias_name> FROM <table_name>;
+```
+
+
+-----
 ## Extras :
 
-### ▶ SQL Aliases
+### ▶ SQL Aliases :
 > SQL aliases are used to give a table, or a column in a table, a temporary name. An alias is created with the `AS` keyword. 
 
 > Column Syntax: 
