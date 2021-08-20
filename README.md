@@ -247,6 +247,7 @@ DELETE FROM <table_name>;
 
 ### ▶ Using `DISTINCT` :
 > The `SELECT DISTINCT` statement is used to return only distinct (different/unique) values from a collumn.
+
 ```
 SELECT DISTINCT <col1_name> FROM <table_name>;
 ```
@@ -257,6 +258,7 @@ SELECT DISTINCT <col1_name>, <col2_name> FROM <table_name>;
 
 ### ▶ Sorting data with `ORDER BY` :
 > The `ORDER BY` keyword is used to sort the result-set in **ascending** or **descending** order. It sorts the records in **ascending** order by default. To sort the records in descending order, use the `DESC` keyword.
+
 ```
 SELECT <col1_name>, <col2_name>
 FROM <table_name>
@@ -287,6 +289,7 @@ ORDER BY
 
 ### ▶ Using `LIMIT` :
 > The `LIMIT` clause is used in the `SELECT` statement to specify the number of records to return. The general syntax is given bellow:
+
 ```
 SELECT <col1_name>, <col2_name>
 FROM <table_name>
@@ -312,14 +315,19 @@ ORDER BY released_year DESC LIMIT 10, 50;
 
 ### ▶ Concatination/Combining :
 > We can cancat/combine multiple fields' value together with `CONCAT()`string function. It returns concatenated string. The general syntax is given bellow.
+
 ```
 CONCAT(col1_name, col2_name, col3_name)
 ```
+
 > We can also use text in between
+
 ```
 CONCAT(col1_name, 'text', col2_name, 'text')
 ```
+
 > `CONCAT()` must have to use with `SELECT`
+
 ```
 SELECT CONCAT(col1_name, col2_name) FROM <table_name>;
 ```
@@ -340,6 +348,7 @@ SELECT CONCAT_WS('<separator>', col1_name, col2_name) AS <alias_name> FROM <tabl
 
 ### ▶ Substring :
 > `SUBSTRING()` Or `SUBSTR()` used to get the parts of the string. The general syntaxes are:
+
 ```
 SUBSTRING(<string>, <position>)
 ```
@@ -352,7 +361,9 @@ SUBSTRING(<string>, <position>, <length>)
 ```
 SUBSTRING(<string> FROM <position> FOR <length>)
 ```
+
 **Examples:**
+
 ```
 mysql> SELECT SUBSTRING('Quadratically',5);
         -> 'ratically'
@@ -372,14 +383,17 @@ mysql> SELECT SUBSTRING('Sakila' FROM -4 FOR 2);
 > `REPLACE()` function replaces all occurrences of a substring within a string, with a new substring.
 
 **Syntax:**
+
 ```
 > REPLACE(<string>, <from_string>, <new_string>)
 
 > SELECT REPLACE(<column_name>, <from_string>, <new_string>) FROM <table_name>;
 ```
->Note: It performs a case-sensitive match when searching for `<from_string>`
+
+> Note: It performs a case-sensitive match when searching for `<from_string>`
 
 **Examples:**
+
 ```
 mysql> SELECT REPLACE('Hello World', 'l', '7');
         -> 'He77o Wor7d'
@@ -454,11 +468,13 @@ SELECT MIN(pages) AS smallest_book, MAX(pages) AS largest_book FROM books;
 > SQL aliases are used to give a table, or a column in a table, a temporary name. An alias is created with the `AS` keyword. 
 
 > Column Syntax: 
+
 ```
 SELECT <column_name> AS <alias_name>
 FROM <table_name>;
 ```
 > Table Syntax:
+
 ```
 SELECT <column_name>
 FROM <table_name> AS <alias_name>;
