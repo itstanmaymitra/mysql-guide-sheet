@@ -1,4 +1,11 @@
 # MySQL guide sheet
+1. [Basic MySQL commands](#basic-mysql-commands)
+    * [List all available dabaseses](#-list-all-available-dabaseses-)
+2. [Table](#table)
+3. [Inserting Data](#inserting-data)
+4. [Retrieving/Read data](#retrievingread-data)
+5. [Updating data](#updating-data)
+6. [MySQL string functions](#mysql-string-functions)
 
 ## Basic MySQL commands
 
@@ -33,16 +40,16 @@ SELECT database();
 SHOW WARNINGS;
 ```
 
----
+----------------------------------------------------------------------------------------------
 ### ▶ Run MySQL commands from the file :
 
 * Create a file with `.sql` file extension
 * `cd` into the file directory
 * Run MySQL in that directory with this command `mysql -u root -p`
 * To run the SQL commands from the file run `source file_name.sql`
----
+----------------------------------------------------------------------------------------------
 
-
+----------------------------------------------------------------------------------------------
 ## Table 
 
 ### ▶ Generic version of creating a table :
@@ -132,8 +139,10 @@ DESC <table_name>;
 ```
 DROP TABLE <table_name>;
 ```
+----------------------------------------------------------------------------------------------
 
 
+----------------------------------------------------------------------------------------------
 ## Inserting Data 
 
 ### ▶ Inserting `single` data into the table :
@@ -155,8 +164,10 @@ VALUES  (column1_value1, column2_value1),
         (column1_value2, column2_value2),
         (column1_value3, column2_value3);
 ```
+----------------------------------------------------------------------------------------------
 
 
+----------------------------------------------------------------------------------------------
 ## Retrieving/Read data
 The `SELECT` statement is used to fetch data from a database **table**.
  
@@ -185,8 +196,10 @@ FROM table_name
 WHERE [condition];
 ```
 > The `WHERE` clause is not only used in the `SELECT` statement, but it is also used in the UPDATE, DELETE statement etc.
+----------------------------------------------------------------------------------------------
 
 
+----------------------------------------------------------------------------------------------
 ## Updating data
 The `UPDATE` statement is used to update existing data in a **table**.
  
@@ -196,7 +209,10 @@ UPDATE <table_name>
 SET column1=value, column2=value2
 WHERE <some_column>=<some_value>;
 ```
+----------------------------------------------------------------------------------------------
 
+
+----------------------------------------------------------------------------------------------
 ## Deleting data
 The `DELETE` statement is used to delete records from a **table**:
  
@@ -209,9 +225,76 @@ WHERE <some_column> = <some_value>;
 ```
 DELETE FROM <table_name>;
 ```
+----------------------------------------------------------------------------------------------
 
------
-## MySQL string functions :
+
+----------------------------------------------------------------------------------------------
+## Selection Refining
+
+### ▶ Using `DISTINCT` :
+> The `SELECT DISTINCT` statement is used to return only distinct (different/unique) values from a collumn.
+```
+SELECT DISTINCT <col1_name> FROM <table_name>;
+```
+Or,
+```
+SELECT DISTINCT <col1_name>, <col2_name> FROM <table_name>;
+```
+
+### ▶ Sorting data with `ORDER BY` :
+> The `ORDER BY` keyword is used to sort the result-set in **ascending** or **descending** order. It sorts the records in **ascending** order by default. To sort the records in descending order, use the `DESC` keyword.
+```
+SELECT <col1_name>, <col2_name>
+FROM <table_name>
+ORDER BY <col1_name>, <col2_name>, ... ASC|DESC;  
+```
+Examples:
+```
+SELECT * FROM Customers
+ORDER BY Country;
+
+Or,
+
+SELECT * FROM Customers
+ORDER BY Country DESC; 
+
+Or,
+
+SELECT
+    title,
+    released_year, 
+    pages
+FROM
+    books
+ORDER BY
+    released_year DESC,
+    pages ASC;
+```
+
+### ▶ Using `LIMIT` :
+> The `LIMIT` clause is used in the `SELECT` statement to specify the number of records to return. The general syntax is given bellow:
+```
+SELECT <col1_name>, <col2_name>
+FROM <table_name>
+ORDER BY <col1_name>
+LIMIT <offset>, <row_count>
+```
+Examples:
+```
+SELECT title, released_year FROM books
+ORDER BY released_year DESC LIMIT 10;
+
+Or,
+
+SELECT title, released_year FROM books
+ORDER BY released_year DESC LIMIT 10, 50;
+```
+
+----------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------
+## MySQL string functions
 
 ### ▶ Concatination/Combining :
 > We can cancat/combine multiple fields' value together with `CONCAT()`string function. It returns concatenated string. The general syntax is given bellow.
@@ -271,10 +354,87 @@ mysql> SELECT SUBSTRING('Sakila' FROM -4 FOR 2);
         -> 'ki'
 ```
 
+### ▶ Replace :
+> `REPLACE()` function replaces all occurrences of a substring within a string, with a new substring.
+
+**Syntax:**
+```
+> REPLACE(<string>, <from_string>, <new_string>)
+
+> SELECT REPLACE(<column_name>, <from_string>, <new_string>) FROM <table_name>;
+```
+>Note: It performs a case-sensitive match when searching for `<from_string>`
+
+**Examples:**
+```
+mysql> SELECT REPLACE('Hello World', 'l', '7');
+        -> 'He77o Wor7d'
+mysql> SELECT REPLACE('Hello World', 'o', '0');
+        -> 'Hell0 W0rld'
+```
+
 **_The full reference of the string functions can be found_** [here](https://dev.mysql.com/doc/refman/8.0/en/string-functions.html "MySQL string functions").
 
------
-## Extras :
+----------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------
+## Aggregate Functions
+
+### ▶ SQL `COUNT` :
+> The COUNT() function returns the number of records returned by a select query.
+
+Examples:
+```
+SELECT COUNT(*) FROM books;
+```
+```
+SELECT COUNT(author_fname) FROM books;
+```
+```
+SELECT COUNT(DISTINCT author_fname) FROM books;
+```
+```
+SELECT COUNT(DISTINCT author_fname, author_lname) FROM books;
+```
+```
+SELECT COUNT(*) AS count FROM books WHERE title LIKE '%the%';
+```
+
+### ▶ SQL `GROUP BY` :
+> The `GROUP BY` statement groups rows that have the same values into summary rows, like "find the number of customers in each country".
+
+> The `GROUP BY` statement is often used with aggregate functions `COUNT(), MAX(), MIN(), SUM(), AVG()` to group the result-set by one or more columns.
+
+Examples:
+```
+SELECT author_lname, COUNT(*) FROM books
+GROUP BY author_lname;
+```
+```
+SELECT author_fname, author_lname, COUNT(*) FROM books
+GROUP BY author_fname, author_lname;
+```
+```
+SELECT released_year, COUNT(*) AS count FROM books 
+GROUP BY released_year ORDER BY count DESC;
+```
+
+### ▶ SQL `MIN()` and `MAX()` Functions :
+> The `MIN()` function returns the smallest value of the selected column.
+
+> The `MAX()` function returns the largest value of the selected column.
+
+Examples:
+```
+SELECT MIN(pages) AS smallest_book, MAX(pages) AS largest_book FROM books;
+```
+
+----------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------
+## Extras
 
 ### ▶ SQL Aliases :
 > SQL aliases are used to give a table, or a column in a table, a temporary name. An alias is created with the `AS` keyword. 
