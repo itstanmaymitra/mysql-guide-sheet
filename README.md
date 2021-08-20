@@ -5,7 +5,11 @@
 3. [Inserting Data](#inserting-data)
 4. [Retrieving/Read data](#retrievingread-data)
 5. [Updating data](#updating-data)
+5. [Deleting data](#deleting-data)
+5. [Selection Refining](#selection-refining)
 6. [MySQL string functions](#mysql-string-functions)
+6. [Aggregate Functions](#aggregate-functions)
+6. [Extras](#extras)
 
 ## Basic MySQL commands
 
@@ -36,6 +40,7 @@ SELECT database();
 
 ### ▶ Display information about errors, warnings, and notes :
 > This command will display information about the conditions (errors, warnings, and notes) resulting from executing a statement in the current session.
+
 ```
 SHOW WARNINGS;
 ```
@@ -61,6 +66,7 @@ CREATE TABLE <table_name>
 );
 ```
 > By default with the command above, the table column cell will accept `Null` values. But we can disable accepting `NULL` values while creating table by the command bellow:
+
 ```
 CREATE TABLE <table_name>
 (
@@ -68,7 +74,8 @@ CREATE TABLE <table_name>
     <column_name2> <data_type> NOT NULL
 );
 ```
-> To set default values to the columns while creating a table we can use the command bellow: (Default value must have to match with the data type) 
+> To set default values to the columns while creating a table we can use the command bellow: (Default value must have to match with the data type)
+
 ```
 CREATE TABLE <table_name>
 (
@@ -89,6 +96,7 @@ CREATE TABLE cats
 > The `PRIMARY KEY` uniquely identifies each record in a table. A table can have only **One** Primary key. Primary keys must contain **Unique** values, and it can not contain **Null values**
 
 > Example: 
+
 ```
 CREATE TABLE unique_cats 
 (
@@ -100,6 +108,7 @@ CREATE TABLE unique_cats
 ```
 
 > Alternative Example :
+
 ```
 CREATE TABLE unique_cats 
 (
@@ -131,6 +140,7 @@ SHOW TABLES;
 SHOW COLUMNS FROM <table_name>;
 ```
 > Alternative (Describing a table)
+
 ```
 DESC <table_name>;
 ```
@@ -152,6 +162,7 @@ VALUES (value);
 ```
 
 > Example :
+
 ```
 INSERT INTO cats (name, age)
 VALUES ('Mini', 12);
