@@ -1,5 +1,8 @@
-remote_theme: pages-themes/hacker@v0.2.0
+remote_theme: jekyll/minima
 plugins:
 - jekyll-remote-theme
+
+minima:
+  skin: dark
 
 google_analytics: G-ZHV5GGQ0TK
