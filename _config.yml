@@ -6,3 +6,11 @@ minima:
   skin: dark
 
 google_analytics: G-ZHV5GGQ0TK
+
+minima:
+  social_links:
+    github: itstanmaymitra
+    twitter: itstanmaymitra
+    facebook: itstanmaymitra
+    instagram: itstanmaymitra
+    linkedin: itstanmaymitra
