@@ -52,6 +52,7 @@ SHOW WARNINGS;
 * `cd` into the file directory
 * Run MySQL in that directory with this command `mysql -u root -p`
 * To run the SQL commands from the file run `source file_name.sql`
+
 ----------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------
