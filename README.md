@@ -207,6 +207,7 @@ SELECT column1, column2
 FROM table_name
 WHERE [condition];
 ```
+
 > The `WHERE` clause is not only used in the `SELECT` statement, but it is also used in the UPDATE, DELETE statement etc.
 
 ----------------------------------------------------------------------------------------------
