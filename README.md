@@ -308,6 +308,42 @@ SELECT title, released_year FROM books
 ORDER BY released_year DESC LIMIT 10, 50;
 ```
 
+### ▶ Searches with `LIKE` :
+> The `LIKE` operator is a logical operator that tests whether a string contains a specified pattern or not. It is  is used in a `WHERE` clause.
+
+There are two wildcard characters often used for constructing patterns. 
+
+* The percent sign (%) represents zero, one, or multiple characters
+* The underscore sign (_) represents one, single character
+
+
+| LIKE Operator | Description |
+|------|------|
+| WHERE CustomerName LIKE `a%` | Finds any values that starts with "a" |
+| WHERE CustomerName LIKE `%a` | Finds any values that ends with "a" |
+| WHERE CustomerName LIKE `%or%` | Finds any values that have "or" in any position |
+| WHERE CustomerName LIKE `_r%` | Finds any values that have "r" in the second position |
+| WHERE CustomerName LIKE `a__%` | Finds any values that starts with "a" and are at least 3 characters in length |
+| WHERE ContactName LIKE `a%o` | Finds any values that starts with "a" and ends with "o" |
+
+> Note: If we want to  search something where string contains percent sign (%) or underscore sign (_) then we have to use backslash (\\) before it. Example: `%\%%` Or, `%\_%`
+
+Syntax :
+```
+SELECT <col1_name>, <col2_name>
+FROM <table_name>
+WHERE <col1_name>
+LIKE <pattern>
+```
+Examples:
+```
+SELECT title FROM books WHERE title LIKE '%the%';
+
+Or, 
+
+SELECT title, author_fname FROM books WHERE author_fname LIKE 'da%';
+```
+
 ----------------------------------------------------------------------------------------------
 
 
