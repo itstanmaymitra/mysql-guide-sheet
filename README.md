@@ -494,6 +494,74 @@ Examples:
 ```
 SELECT MIN(pages) AS smallest_book, MAX(pages) AS largest_book FROM books;
 ```
+With Subqueries:
+```
+SELECT title, pages FROM books WHERE pages = (SELECT MAX(pages) FROM books);
+```
+With `GROUP BY`:
+```
+SELECT
+    CONCAT_WS(' ', author_fname, author_lname) AS 'author_name',
+    COUNT(*) AS 'book_count',
+    MIN(released_year) AS 'first_book',
+    MAX(released_year) AS 'last_book'
+FROM books
+GROUP BY 
+    author_fname,
+    author_lname;
+```
+
+### ▶ `SUM()` Function :
+
+> The `SUM()` function calculates the sum of a set of values.
+
+Syntax:
+```
+SUM(DISTINCT expression)
+```
+
+> The `DISTINCT` option instructs the `SUM()` function to calculate the sum of only distinct values in a set.
+
+Examples:
+```
+SELECT SUM(pages) FROM books;
+```
+```
+SELECT 
+    author_fname,
+    author_lname,
+    Sum(pages)
+FROM books
+GROUP BY
+    author_lname,
+    author_fname;
+```
+
+### ▶ `AVG()` Function :
+
+> The MySQL `AVG()` function is an aggregate function that allows you to calculate the average value of a set.
+
+Syntax:
+```
+AVG(DISTINCT expression)
+```
+
+> You use the `DISTINCT` operator in the `AVG` function to calculate the average value of the distinct values.
+
+Examples:
+```
+SELECT AVG(pages) FROM books;
+```
+```
+SELECT
+    author_fname,
+    author_lname,
+    AVG(pages)
+FROM books
+GROUP BY 
+    author_lname,
+    author_fname;
+```
 
 ----------------------------------------------------------------------------------------------
 
