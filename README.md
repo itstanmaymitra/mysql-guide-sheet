@@ -3,13 +3,14 @@
     * [List all available dabaseses](#-list-all-available-dabaseses-)
 2. [Table](#table)
 3. [Inserting Data](#inserting-data)
-4. [Retrieving/Read data](#retrievingread-data)
-5. [Updating data](#updating-data)
-5. [Deleting data](#deleting-data)
-5. [Selection Refining](#selection-refining)
-6. [MySQL string functions](#mysql-string-functions)
-6. [Aggregate Functions](#aggregate-functions)
-6. [Extras](#extras)
+4. [Selecting/Retrieving/Reading data](#selectingretrievingreading-data)
+5. [Filtering data/records](#filtering-datarecords)
+6. [Updating data](#updating-data)
+7. [Deleting data](#deleting-data)
+8. [Selection Refining](#selection-refining)
+9. [MySQL string functions](#mysql-string-functions)
+10. [Aggregate Functions](#aggregate-functions)
+11. [Extras](#extras)
 
 ## Basic MySQL commands
 
@@ -181,7 +182,7 @@ VALUES  (column1_value1, column2_value1),
 
 
 ----------------------------------------------------------------------------------------------
-## Retrieving/Read data
+## Selecting/Retrieving/Reading data
 The `SELECT` statement is used to fetch data from a database **table**.
  
 ### ▶ Fetch all the available column data from the table :
@@ -200,6 +201,11 @@ or,
 SELECT <col1_name>, <col2_name> FROM <table_name>;
 ```
 
+----------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------
+## Filtering data/records
 ### ▶ Fetch column/columns data from the table with condition using `WHERE` :
 > The `WHERE` clause is used to specify a condition while fetching the data from a single table or by joining with multiple tables. If the given condition is satisfied, then only it returns a specific value from the table.
 
@@ -210,6 +216,47 @@ WHERE [condition];
 ```
 
 > The `WHERE` clause is not only used in the `SELECT` statement, but it is also used in the UPDATE, DELETE statement etc.
+
+### ▶ `AND`, `OR` and `NOT` Operators :
+The WHERE clause can be used with `AND`, `OR`, and `NOT` operators.
+
+* The `AND` operator displays a record if all the conditions separated by `AND` are TRUE.
+* The `OR` operator displays a record if any of the conditions separated by `OR` is TRUE.
+* The 'NOT' operator displays a record if the condition(s) is NOT TRUE.
+
+
+
+```
+SELECT column1, column2, ...
+FROM <table_name>
+WHERE condition1 AND condition2 AND condition3;
+
+---------------------------
+
+SELECT column1, column2, ...
+FROM <table_name>
+WHERE condition1 OR condition2 OR condition3;
+
+---------------------------
+
+SELECT column1, column2, ...
+FROM <table_name>
+WHERE NOT condition;
+```
+
+> We can also use AND, OR and NOT operators together.
+
+
+### ▶ `BETWEEN` Operator :
+The `BETWEEN` operator selects values within a given range. The values can be numbers, text, or dates. The `BETWEEN` operator is inclusive: begin and end values are included.
+
+```
+SELECT <column_name>
+FROM <table_name>
+WHERE <column_name> BETWEEN value1 AND value2;
+```
+
+> We can also use AND, OR and NOT operators with BETWEEN.
 
 ----------------------------------------------------------------------------------------------
 
